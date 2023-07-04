@@ -47,6 +47,12 @@ class AppRoutes {
       icon: Icons.input_rounded,
       name: 'Text Inputs',
       screen: const InputScreen(),
+    ),
+    MenuOption(
+      route: 'slider',
+      icon: Icons.slow_motion_video_rounded,
+      name: 'Slider && Checks',
+      screen: const SliderScreen(),
     )
   ];
 
