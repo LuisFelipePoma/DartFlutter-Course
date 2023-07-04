@@ -1,0 +1,12 @@
+{
+      "configurations": [
+            {
+                  "name": "Flutter (moto e32)",
+                  "program": "lib/main.dart",
+                  "cwd": "src\\Projects\\flutter_components",
+                  "deviceId": "ZY32GBTP3L",
+                  "request": "launch",
+                  "type": "dart"
+            }
+      ]
+}
