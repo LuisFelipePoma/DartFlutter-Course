@@ -12,7 +12,9 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Peliculas en cines'),
+        title: const Center(
+          child: Text('Peliculas en cines'),
+        ),
         elevation: 0,
         actions: [
           IconButton(
@@ -25,9 +27,10 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             CardSwiper(movies: moviesProvider.onDisplayMovies),
-            const MovieSlider(),
-            const MovieSlider(),
-            const MovieSlider(),
+            MovieSlider(
+              movies: moviesProvider.popularMovies,
+              title: 'Populares',
+            ),
           ],
         ),
       ),
