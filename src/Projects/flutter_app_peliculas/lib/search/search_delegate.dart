@@ -7,6 +7,8 @@ class MovieSearchDelegate extends SearchDelegate {
   @override
   String? get searchFieldLabel => 'Buscar pelicula';
 
+  List<Movie> moviesBuffer = List.empty();
+  String queryBuffer = '';
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -45,7 +47,13 @@ class MovieSearchDelegate extends SearchDelegate {
     if (query.isEmpty) {
       return _EmptyContainer();
     }
-
+    if (moviesBuffer.isNotEmpty && queryBuffer == query) {
+      return ListView.builder(
+        itemCount: moviesBuffer.length,
+        itemBuilder: (_, index) => _MovieItem(moviesBuffer[index]),
+      );
+    }
+    queryBuffer = query;
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
     moviesProvider.getSuggestionsByQuery(query);
     return StreamBuilder(
@@ -53,6 +61,7 @@ class MovieSearchDelegate extends SearchDelegate {
       builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
         if (!snapshot.hasData) return _EmptyContainer();
         final List<Movie> movies = snapshot.data!;
+        moviesBuffer = movies;
         return ListView.builder(
           itemCount: movies.length,
           itemBuilder: (_, index) => _MovieItem(movies[index]),
@@ -74,7 +83,7 @@ class _MovieItem extends StatelessWidget {
       leading: Hero(
         tag: movie.heroId!,
         child: FadeInImage(
-          placeholder: AssetImage('assets/loading.gif'),
+          placeholder: const AssetImage('assets/loading.gif'),
           image: NetworkImage(movie.fullPosterPath),
           width: 50,
           height: 100,
