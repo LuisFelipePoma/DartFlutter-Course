@@ -15,6 +15,7 @@ class Movie {
   bool video;
   double voteAverage;
   int voteCount;
+	String? heroId;
 
   Movie({
     required this.adult,
