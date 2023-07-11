@@ -68,8 +68,8 @@ class Page1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Stack(
       children: [
-        // Background Image
-        Background(),
+        // _Background Image
+        _Background(),
         //
         MainContent(),
       ],
@@ -104,8 +104,8 @@ class MainContent extends StatelessWidget {
   }
 }
 
-class Background extends StatelessWidget {
-  const Background({super.key});
+class _Background extends StatelessWidget {
+  const _Background();
 
   @override
   Widget build(BuildContext context) {
