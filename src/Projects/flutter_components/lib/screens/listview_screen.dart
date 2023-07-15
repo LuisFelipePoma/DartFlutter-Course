@@ -105,9 +105,7 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 }
 
 class _LoadingIcon extends StatelessWidget {
-  const _LoadingIcon({
-    super.key,
-  });
+  const _LoadingIcon();
 
   @override
   Widget build(BuildContext context) {
