@@ -27,6 +27,8 @@ class _HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
       child: Column(
         children: [
           // Titles

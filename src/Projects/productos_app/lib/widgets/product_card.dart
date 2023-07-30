@@ -145,9 +145,10 @@ class _ProductDetails extends StatelessWidget {
 }
 
 class _BackgroundImage extends StatelessWidget {
-  // ignore: unused_element
   const _BackgroundImage({this.picture});
+
   final String? picture;
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -162,6 +163,12 @@ class _BackgroundImage extends StatelessWidget {
                 placeholder: const AssetImage('assets/jar-loading.gif'),
                 image: NetworkImage(picture!),
                 fit: BoxFit.cover,
+                imageErrorBuilder: (context, error, stackTrace) {
+                  return const Image(
+                    image: AssetImage('assets/no-image.png'),
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
       ),
     );

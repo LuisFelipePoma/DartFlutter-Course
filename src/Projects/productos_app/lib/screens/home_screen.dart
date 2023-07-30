@@ -16,7 +16,6 @@ class HomeScreen extends StatelessWidget {
     Future<void> onRefresh() async {
       await Future.delayed(const Duration(seconds: 2));
       await productsService.refresh();
-      print(productsService.products[0].name);
     }
 
     return Scaffold(
@@ -28,14 +27,18 @@ class HomeScreen extends StatelessWidget {
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           itemCount: products.length,
-          itemBuilder: (context, index) => GestureDetector(
-              onTap: () {
-                productsService.selectedProduct =
-                    productsService.products[index].copy();
-                Navigator.pushNamed(context, 'products',
-                    arguments: products[index]);
-              },
-              child: ProductCard(product: products[index])),
+          itemBuilder: (context, index) {
+            return GestureDetector(
+                onTap: () {
+                  productsService.selectedProduct =
+                      productsService.products[index].copy();
+                  Navigator.pushNamed(context, 'products',
+                      arguments: products[index]);
+                },
+                child: ProductCard(product: products[index]));
+
+            
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
